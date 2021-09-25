@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load demo_filter %}
+{% block content %}
+<!-- Product section-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>{{ demo.subject }}</h5>
+                <p class="mb-0">{{ demo.content }}</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p><b>Author:</b> {{ demo.author }} </p>
+                <p><b>Create Date:</b> {{ demo.create_date}} </p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-0 mb-0">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'demo:detail' demo.id %}">Start Demo</a></div>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="{{ demo.photo.url }}" alt="project-image" class="img-fluid">
+            <div class="project-info-box">
+                <p> <b>Task:</b> {{ demo.task }} </p>
+                <p> <b>Framework:</b> {{ demo.framework }} </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+    </div>
+</div>
+{% endblock %}
