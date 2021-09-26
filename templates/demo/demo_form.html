@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">Demo Resistration</h5>
+    <form method="post" class="post-form my-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="photo">사진</label>
+            <input id="photo" type="file" class="" name="photo">
+        </div>
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content"
+                      id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="framework">Framework</label>
+            <p name="framework" id="framework">{{ form.framework }}</p>
+        </div>
+        <div class="form-group">
+            <label for="task">Task</label>
+            <p name="task" id="task">{{ form.task }}</p>
+        </div>
+
+        <button type="submit" value="Submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}

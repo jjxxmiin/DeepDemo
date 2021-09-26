@@ -13,6 +13,12 @@
           <a class="nav-link" href="#">Pricing</a>
         </li> -->
       </ul>
-      <button href="#" class="btn btn-dark my-2 my-sm-0">New Demo</button>
+      <a href="{% url 'demo:demo_create' %}" class="btn btn-dark my-2 my-sm-0">New Demo</a>
+      
+      {% if user.is_authenticated %}
+      <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+      {% else %}
+      <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
+      {% endif %}
     </div>
   </nav>
