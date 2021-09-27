@@ -1,8 +1,10 @@
-from django.shortcuts import redirect, render
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 from ..forms import DemoForm
+from ..models import Demo
 
 
 @login_required(login_url='common:login')
@@ -21,3 +23,10 @@ def demo_create(request):
         form = DemoForm()
     context = {'form': form}
     return render(request, 'demo/demo_form.html', context)
+
+
+@login_required(login_url='common:login')
+def demo_modify(request, demo_id):
+    demo = get_object_or_404(Demo, pk=demo_id)
+    if request.user != demo.author:
+        messages.error
