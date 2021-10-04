@@ -16,7 +16,11 @@
             </div><!-- / project-info-box -->
 
             <div class="project-info-box mt-0 mb-0">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'demo:detail' demo.id %}">Start Demo</a></div>
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ demo.url }}">Start Demo</a></div>
+                {% if request.user == demo.author %}
+                    <a href="{% url 'demo:demo_modify' demo.id  %}" class="small">수정</a>,
+                    <a href="#" class="small delete"  data-uri="{% url 'demo:demo_delete' demo.id  %}">삭제</a>
+                {% endif %}
             </div><!-- / project-info-box -->
         </div><!-- / column -->
 
