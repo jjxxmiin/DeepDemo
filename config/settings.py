@@ -8,9 +8,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY') # heroku
 
-DEBUG = config('DEBUG', default=True, cast=bool) # heroku
+DEBUG = config('DEBUG', default=False, cast=bool) # heroku
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "shielded-ravine-98276.herokuapp.com",
+    "127.0.0.1",
+]
 
 # Application definition
 
