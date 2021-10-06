@@ -14,8 +14,8 @@ def demo_create(request):
         if form.is_valid():
             demo = form.save(commit=False)
             demo.author = request.user
-            if request.FILES:
-                demo.photo = request.FILES['photo']
+            # if request.FILES:
+            #     demo.photo = request.FILES['photo']
             demo.create_date = timezone.now()
             demo.save()
             return redirect('demo:index')
@@ -39,8 +39,8 @@ def demo_modify(request, demo_id):
         form = DemoForm(request.POST, instance=demo)
         if form.is_valid():
             demo = form.save(commit=False)
-            if request.FILES:
-                demo.photo = request.FILES['photo']
+            # if request.FILES:
+            #     demo.photo = request.FILES['photo']
             demo.modify_date = timezone.now()  # 수정일시 저장
             demo.save()
             return redirect('demo:detail', demo_id=demo.id)
